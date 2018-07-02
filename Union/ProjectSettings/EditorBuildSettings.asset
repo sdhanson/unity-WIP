@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Resetting Learning Phase.unity
     guid: d2b0268222cf846469322aa097912031
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Resetting Practice Phase.unity
     guid: a7418ed2780bf2647b54e4cb6d3d925f
   - enabled: 0
@@ -47,6 +47,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Rest Phase.unity
     guid: 097157bfd7f98ce4ba3c375546e39b12
-  - enabled: 0
+  - enabled: 1
     path: Assets/CW4 Oculus Go.unity
     guid: b593529c22dbc804f9d251fabb25a093

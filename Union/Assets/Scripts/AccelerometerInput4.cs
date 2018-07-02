@@ -57,7 +57,7 @@ public class AccelerometerInput4 : MonoBehaviour
 	void FixedUpdate () //was previously FixedUpdate()
 	{
 		//Do the movement algorithm, more details inside
-		// move ();
+		move ();
 		//Send the current transform data to the server (should probably be wrapped in an if isAndroid but I haven't tested)
 
 		float x = display.acceleration.x;
@@ -125,11 +125,10 @@ public class AccelerometerInput4 : MonoBehaviour
 		zVal = 0.55f * Mathf.Cos (rad);
 		xVal = 0.55f * Mathf.Sin (rad);
 
-		bool looking = false;
-		//bool looking = (look (eulerX, InputTracking.GetLocalRotation (XRNode.Head).eulerAngles.x, 10f) || look (eulerZ, InputTracking.GetLocalRotation (XRNode.Head).eulerAngles.z, 10f));
+		bool looking = (look (eulerX, InputTracking.GetLocalRotation (XRNode.Head).eulerAngles.x, 20f) || look (eulerZ, InputTracking.GetLocalRotation (XRNode.Head).eulerAngles.z, 20f));
 
 		if (!looking) {
-			if ((display.acceleration.y >= 0.9f || display.acceleration.y <= -0.9f)) {
+			if ((display.acceleration.y >= 0.75f || display.acceleration.y <= -0.75f)) {
 				if (wasTwo) { //we are transitioning from phase 2 to 1
 					method1StartTimeGrow = Time.time;
 					wasTwo = false;
@@ -142,7 +141,7 @@ public class AccelerometerInput4 : MonoBehaviour
 					wasTwo = true;
 				}
 			}
-			if ((display.acceleration.y >= 0.9f || display.acceleration.y <= -0.9f)) {
+			if ((display.acceleration.y >= 0.75f || display.acceleration.y <= -0.75f)) {
 				velocity = 3.0f - (3.0f - velocity) * Mathf.Exp ((method1StartTimeGrow - Time.time) / 0.5f); //grow
 			} else {
 				velocity = 0.0f - (0.0f - velocity) * Mathf.Exp ((method1StartTimeDecay - Time.time) / decayRate); //decay
